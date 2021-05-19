@@ -1,0 +1,23 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: localhost
+
+development:
+  <<: *default
+  database: rent_roll_api_development
+  username: rent_roll_api
+  password:
+
+test:
+  <<: *default
+  database: rent_roll_api_test
+  username: rent_roll_api
+  password:
+
+production:
+  <<: *default
+  database: rent_roll_api_production
+  username: rent_roll_api
+  password: <%= ENV['RENT_ROLL_API_DATABASE_PASSWORD'] %>
